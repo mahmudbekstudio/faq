@@ -1,4 +1,4 @@
 <?php
-class View extends CoreClass {
+class View extends Instance {
 	//
 }

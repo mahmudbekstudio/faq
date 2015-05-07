@@ -1,4 +1,4 @@
 <?php
-class Controller extends CoreClass {
+class Controller extends Instance {
 	//
 }

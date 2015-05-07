@@ -2,7 +2,7 @@
 if ( !defined('PATHROOT') )
 	define('PATHROOT', dirname(__FILE__) . '/');
 
-define('PATHPATHLIB', PATHROOT . 'lib/');
+define('PATHLIB', PATHROOT . 'lib/');
 define('PATHMOD', PATHROOT . 'modules/');
 
 define('DEBUG', false);

@@ -1,4 +1,4 @@
 <?php
-class Model extends CoreClass {
+class Model extends Instance {
 	//
 }
