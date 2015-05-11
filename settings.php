@@ -4,26 +4,13 @@ function __autoload($class_name) {
 }
 
 $routes = array(
-	'frontend' => array('get', '/', function() {
-		echo 'this is frontend';
-	}),
-
-	'backend' => array('get', '/admin', function() {
-		echo 'this is backend';
-	}),
-
-	'category' => array('get', '/category', function() {
-		echo 'this is category';
-	}),
-
-	'categoryItem' => array('get', '/category/\d*', function($id) {
-		echo 'this is category ITEM ' . $id;
-	}),
+	array('GET', '/', 'frontend/default/index', 'home'),
+	array('GET', '/search/[*:s]', 'frontend/search/index', 'search'),
+	array('GET|POST', '*', 'frontend/default/404', '404')
 );
+
+$matchTypes = array();
 
 Application::setDB(new Database(DBHOST, DBUSER, DBPASSWORD, DBNAME, DBTABLEPREFIX, DBCHARSET, DBCOLLATE));
 Application::setSession(new Session());
-Application::setRouter(new Router($routes));
-
-$router = Application::get('router');
-$router->run();
+Application::setRouter(new AltoRouter($routes, BASEPATH, $matchTypes));
