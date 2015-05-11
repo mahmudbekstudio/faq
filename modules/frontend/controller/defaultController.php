@@ -6,7 +6,7 @@ class defaultController extends Controller {
 	}
 
 	public function action404() {
-		echo 'default 404';
+		return $this->getView('404', array('name' => 'test'));
 	}
 
 }

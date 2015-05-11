@@ -17,14 +17,18 @@ class Application {
 
 	public static function run($debug) {
 		self::$vars['debug'] = $debug;
+		$content = '';
 
 		if(isset(self::$vars['router'])) {
-			$match = self::$vars['router']->match();print_r($match);
-			self::executeRouter($match);
+			$match = self::$vars['router']->match();
+			$content = self::executeRouter($match);
 		}
+
+		include(PATHROOT . 'theme/' . DEFAULTTHEME . '/index.php');
 	}
 
 	private static function executeRouter($match) {
+		$result = '';
 		if($match !== false) {
 			if(is_callable( $match['target'] )) {
 				call_user_func($match['target']);
@@ -35,9 +39,10 @@ class Application {
 				$actionName = 'action' . ucfirst($target[2] ? $target[2] : DEFAULTACTION);
 				include_once(PATHMOD . $moduleName . '/controller/' . $controllerName . '.php');
 				$controller = new $controllerName();
-				call_user_func_array(array($controller, $actionName), $match['params']);
+				$result = call_user_func_array(array($controller, $actionName), $match['params']);
 			}
 		}
+		return $result;
 	}
 
 	public static function get($var) {
