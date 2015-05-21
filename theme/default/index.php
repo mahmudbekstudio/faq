@@ -47,9 +47,11 @@
 
 <!-- Begin page content -->
 <div class="container">
-	<?php
-	echo $content;
-	?>
+	<div class="col-left">Left</div>
+	<div class="col-right">Right</div>
+	<div class="col-middle row"><?php
+		echo $content;
+		?></div>
 	<?php /*
 	<div class="page-header">
 		<h1>Sticky footer with fixed navbar</h1>

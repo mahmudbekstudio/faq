@@ -2,7 +2,7 @@
 class defaultController extends Controller {
 
 	public function actionIndex() {
-		echo 'default index';
+		return $this->getView('main', array('name' => 'test'));
 	}
 
 	public function action404() {

@@ -37,3 +37,17 @@ body > .container {
 code {
 	font-size: 80%;
 }
+
+.col-left {
+	float: left;
+	width: 250px;
+}
+
+.col-right {
+	float: right;
+	width: 250px;
+}
+
+.col-middle {
+	padding: 0 265px;
+}
